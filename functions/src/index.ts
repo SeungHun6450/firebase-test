@@ -9,8 +9,16 @@ import todo from './routes/todo'
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+// whitelist방식, 얘들만 허용한다!
+app.use(cors({
+  origin: [
+    'kdt2-test-start.web.app',
+    'kdt2-test-start.firebaseapp.com'
+  ]
+}))
 app.use('/todo', todo)
 
-export const api = functions.https.onRequest(app)
+export const api = functions
+  .region('asia-northeast3')
+  .https.onRequest(app)
 // http://localhost:5001/kdt2-test-start/us-central1/api/todo

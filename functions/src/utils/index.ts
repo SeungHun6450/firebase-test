@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 // import validator from 'validator'
 import * as FileType from 'file-type'
 
-export async function saveFile(base64: string, bucketName = 'images') {
+export async function saveFile(base64: string, bucketName = 'kdt2-test-start-images') {
   const bucket = admin.storage().bucket(bucketName)
   
   // if (!validator.isBase64(base64)) {
